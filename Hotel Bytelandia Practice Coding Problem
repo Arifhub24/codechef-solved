@@ -1,0 +1,24 @@
+from collections import deque
+
+for _ in range(int(input())):
+	N = int(input())
+	arrive = list(map(int,input().split()))
+	leave = list(map(int,input().split()))
+	arrive.sort()
+	leave.sort()
+
+	Arrive = deque(arrive)
+	Leave = deque(leave)
+
+	leaving_time = deque()
+	
+	for i in range(N):
+		A,L = Arrive.popleft(), Leave.popleft()
+		if leaving_time:
+			if leaving_time[0] <= A:
+				leaving_time.popleft()
+		leaving_time.append(L)
+
+	print(len(leaving_time))
+
+
