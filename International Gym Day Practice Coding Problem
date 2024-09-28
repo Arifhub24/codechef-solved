@@ -1,0 +1,27 @@
+
+
+def min_trial(D,X,Y):
+	if Y * D < X:
+		return -1
+	elif Y >= X:
+		return 0
+	discount = 0
+	trial = 0
+	while Y > 0 and discount + D <= 100:
+		discount += D 
+		Y -= 1
+		trial += 1
+		current_capital = X * discount / 100 + Y
+		# print(f'the amount after discount {discount}% = ', current_capital)
+		if current_capital >= X:
+			return trial
+	return -1
+
+
+		
+
+for _ in range(int(input())):
+	D,X,Y = map(int,input().split())
+	print(min_trial(D,X,Y))
+
+
